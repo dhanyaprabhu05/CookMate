@@ -1,0 +1,136 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Colour palette: warm kitchen tones. Each colour changes in dark mode. */
+:root {
+  --bg: #faf6f0;
+  --panel: #f3ece2;
+  --surface: #ffffff;
+  --ink: #2a1f17;
+  --muted: #8b7a69;
+  --line: #e9dfd2;
+  --accent: #d9622b;
+  --accent-2: #eaa23a;
+  --accent-soft: #fbe7da;
+  --user: #2a1f17;
+  --user-ink: #faf6f0;
+}
+.dark {
+  --bg: #15110e;
+  --panel: #1c1713;
+  --surface: #221c17;
+  --ink: #f2e9df;
+  --muted: #a39282;
+  --line: #2f2721;
+  --accent: #f07b42;
+  --accent-2: #f2b453;
+  --accent-soft: #3a2519;
+  --user: #f2e9df;
+  --user-ink: #15110e;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
+  --color-user: var(--user);
+  --color-user-ink: var(--user-ink);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* Thin, quiet scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+/* Markdown inside CookMate's replies */
+.prose-cook {
+  --tw-prose-body: var(--ink);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-bullets: var(--accent);
+  --tw-prose-counters: var(--accent);
+  --tw-prose-links: var(--accent);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--muted);
+  --tw-prose-code: var(--ink);
+  --tw-prose-th-borders: var(--line);
+  --tw-prose-td-borders: var(--line);
+}
+.prose-cook h1,
+.prose-cook h2,
+.prose-cook h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-rise {
+  animation: rise 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes bounce-dot {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  40% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+.dot {
+  animation: bounce-dot 1.2s infinite ease-in-out;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .dot {
+    animation: none;
+  }
+}

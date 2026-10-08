@@ -1,0 +1,7 @@
+google-genai
+python-dotenv
+fastapi
+uvicorn
+scikit-learn
+langgraph
+langchain-google-genai

@@ -1,0 +1,24 @@
+# Secrets - never upload
+.env
+
+# Your private chat history
+data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Frontend
+node_modules/
+dist/
+
+# Kaggle dataset (licence unknown - don't redistribute)
+model/data/
+archive.zip
+
+# Neural network experiment output (14 MB, not used by the app)
+model/cuisine_nn.joblib
+
+# Python caches
+.pytest_cache/
